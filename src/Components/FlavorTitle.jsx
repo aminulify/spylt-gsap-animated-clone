@@ -10,7 +10,7 @@ const FlavorTitle = () => {
   });
 
   const tl = gsap.timeline({
-    delay: 0.5,
+    delay: 0.3,
     scrollTrigger: {
       trigger: ".flavor-text-title",   
       start: "top 80%",               

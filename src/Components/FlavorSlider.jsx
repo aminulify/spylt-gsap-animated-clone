@@ -2,16 +2,23 @@ import { useGSAP } from "@gsap/react"
 import { gsap } from "gsap";
 import { flavorlists } from "../Constants"
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const FlavorSlider = () => {
   const sliderRef = useRef();
 
+  const isMobile = useMediaQuery({
+    query: "(max-width: 900px)"
+  })
+
   useGSAP(() => {
     if (!sliderRef.current) return; // guard check
 
-    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
 
-    const tl = gsap.timeline({
+    if(!isMobile){
+      const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+
+      const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".flavor-section",
         start: "2% top",
@@ -26,6 +33,7 @@ const FlavorSlider = () => {
       x: `-=${scrollAmount + 1000}px`,
       ease: "power1.inOut",
     });
+    }
 
     const titleTl = gsap.timeline({
       scrollTrigger: {
