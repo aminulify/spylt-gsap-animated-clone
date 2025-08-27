@@ -24,9 +24,9 @@ const HeroSection = () => {
     tl.from(".nav-animation",{
         opacity: 0,
         yPercent: -20,
-        scrub: 3,
         duration: 1,
         scale: 0.9,
+        scrub: 3,
         ease: "back.inOut",
     })
 

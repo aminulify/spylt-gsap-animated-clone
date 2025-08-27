@@ -10,11 +10,11 @@ const FlavorTitle = () => {
   });
 
   const tl = gsap.timeline({
-    delay: 0.7,
+    delay: 0.5,
     scrollTrigger: {
-      trigger: ".flavor-text-title",   // run when this element enters viewport
-      start: "top 80%",               // start when top of element hits 80% viewport
-      end: "bottom 60%",              // optional end
+      trigger: ".flavor-text-title",   
+      start: "top 80%",               
+      end: "bottom 60%",             
       toggleActions: "play none none reverse", 
     },
   });
@@ -27,7 +27,6 @@ const FlavorTitle = () => {
     ease: "power2.out",
   });
 
-  // Reveal the next element
   tl.to(
     ".flavor-text-scroll",
     {
@@ -35,7 +34,7 @@ const FlavorTitle = () => {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       ease: "circ.in",
     },
-    "-=0.5" // overlap a little with previous
+    "-=0.5"
   );
 });
 

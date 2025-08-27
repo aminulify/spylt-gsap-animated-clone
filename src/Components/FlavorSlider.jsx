@@ -15,17 +15,42 @@ const FlavorSlider = () => {
       scrollTrigger: {
         trigger: ".flavor-section",
         start: "2% top",
-        end: `+=${scrollAmount + 800}px`,
-        scrub: 7,
+        end: `+=${scrollAmount + 1000}px`,
+        scrub: 5,
         pin: true,
         // markers: true,
       },
     });
 
     tl.to(".flavor-section", {
-      x: `-=${scrollAmount + 800}px`,
+      x: `-=${scrollAmount + 1000}px`,
       ease: "power1.inOut",
     });
+
+    const titleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: 'top top',
+        end: 'bottom 80%',
+        scrub: 3
+      }
+    });
+
+    titleTl
+      .to(".first-text-split",{
+            xPercent: -30,
+            ease: "power1.inOut",
+          })
+      .to(".flavor-text-scroll",{
+        xPercent: -22,
+      }, "<"
+    )
+      .to(".second-text-split",{
+        xPercent: -10,
+        ease: "power1.inOut"
+      }, "<"
+    );
+
   }, []);
 
   return (
