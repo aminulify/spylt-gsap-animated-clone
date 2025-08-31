@@ -50,13 +50,13 @@ const FlavorTitle = () => {
         }}
         className="flavor-text-scroll"
       >
-        <div className="bg-mid-brown p-5 2xl:pt-0 pt-3 2xl:px-5 px-3">
+        <div className="bg-mid-brown p-5 2xl:pt-0 pt-3 px-3">
           <h2 className="text-milk">freaking</h2>
         </div>
       </div>
 
       <div className="overflow-hidden 2xl:py-0 py-3 second-text-split">
-        <h1 className="flavor-text-title">delicious flavors</h1>
+        <h1 className="flavor-text-title md:mt-0 -mt-2">delicious flavors</h1>
       </div>
     </div>
   );

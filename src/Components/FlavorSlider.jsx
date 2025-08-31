@@ -33,7 +33,7 @@ const FlavorSlider = () => {
       x: `-=${scrollAmount + 1000}px`,
       ease: "power1.inOut",
     });
-    }
+
 
     const titleTl = gsap.timeline({
       scrollTrigger: {
@@ -58,6 +58,35 @@ const FlavorSlider = () => {
         ease: "power1.inOut"
       }, "<"
     );
+    }
+
+    // for mobile view 
+    // for mobile view 
+      if(isMobile){
+        const titleTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: 'top 20%',
+          end: 'bottom 80%',
+          scrub: 3
+        }
+      });
+
+      titleTl
+        .to(".first-text-split",{
+              xPercent: -30,
+              ease: "power1.inOut",
+            })
+        .to(".flavor-text-scroll",{
+          xPercent: -22,
+        }, "<"
+      )
+        .to(".second-text-split",{
+          xPercent: -10,
+          ease: "power1.inOut"
+        }, "<"
+      );
+    }
 
   }, []);
 
@@ -83,7 +112,9 @@ const FlavorSlider = () => {
             </div>
           ))
         }
+
       </div>
+      
     </div>
   )
 }
