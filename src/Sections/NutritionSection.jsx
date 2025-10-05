@@ -1,10 +1,24 @@
 import { useGSAP } from "@gsap/react"
+import { useState } from "react"
 import { useMediaQuery } from "react-responsive"
+import { nutrientLists } from "../Constants";
+import { useEffect } from "react";
 
 const NutritionSection = () => {
     const isMobile = useMediaQuery({
         query: "(max-width: 768px)"
     })
+
+    const [list, setList] = useState(nutrientLists);
+
+    useEffect(()=>{
+        if(isMobile){
+            setList(nutrientLists.slice(0,3))
+        }else{
+            setList(nutrientLists);
+        }
+    },[isMobile])
+
     useGSAP(()=>{
 
     })
@@ -33,7 +47,27 @@ const NutritionSection = () => {
                 </div>
             </div>
             <p className={`${isMobile && 'left-5'} absolute md:right-10 text-sm tracking-wide md:text-right text-balance font-paragraph md:w-[200px] md:top-3/8 top-3/6 w-[250px]`}>Milk contains a wide array of nutrients, including vitamins, minerals and protein and this is lactose free.</p>
-        </div>        
+        </div>      
+
+        <div className="nutrition-box">
+          <div className="list-wrapper">
+            {list.map((nutrient, index) => (
+              <div key={index} className="relative flex-1 col-center">
+                <div>
+                  <p className="md:text-lg font-paragraph">{nutrient.label}</p>
+                  <p className="font-paragraph text-sm mt-2">up to</p>
+                  <p className="text-2xl md:text-4xl tracking-tighter font-bold">
+                    {nutrient.amount}
+                  </p>
+                </div>
+
+                {index !== list.length - 1 && (
+                  <div className="spacer-border" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>  
     </section>
   )
 }
