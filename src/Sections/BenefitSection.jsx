@@ -2,6 +2,7 @@ import React from 'react';
 import ClipPathTItle from '../Components/ClipPathTItle';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
+import VideoPinSection from '../Components/VideoPinSection';
 
 const BenefitSection = () => {
   useGSAP(() => {
@@ -44,7 +45,7 @@ const BenefitSection = () => {
 
     return (
         <section className='benefit-section'>
-            <div className='container mx-auto pt-20 pb-20'>
+            <div className='container mx-auto pt-20'>
                 <div className='col-center'>
                     <p>
                       Unlock the Advantages: <br/> Explore the Key Benefits of Choosing SPYLT
@@ -84,6 +85,10 @@ const BenefitSection = () => {
                         <p>And much more...</p>
                     </div>
                 </div>
+            </div>
+
+            <div className='relative overlay-box'>
+                <VideoPinSection />
             </div>
         </section>
     );
