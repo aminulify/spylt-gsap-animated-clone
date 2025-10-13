@@ -8,6 +8,8 @@ import FlavorSection from './Sections/FlavorSection';
 import { useEffect } from 'react';
 import NutritionSection from './Sections/NutritionSection';
 import BenefitSection from './Sections/BenefitSection';
+import TestimonialSection from './Sections/TestimonialSection';
+import FooterSection from './Sections/FooterSection';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -29,8 +31,12 @@ function App() {
           <MessageSection />
           <FlavorSection />
           <NutritionSection />
-        <BenefitSection />
-          <div className='h-dvh border border-red-500'></div>
+          <div>
+            <BenefitSection />
+            <TestimonialSection />
+          </div>
+          <FooterSection />
+          {/* <div className='h-dvh border border-red-500'></div> */}
           
         </div>
       </div>
