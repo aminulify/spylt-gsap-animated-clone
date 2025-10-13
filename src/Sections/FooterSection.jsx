@@ -10,7 +10,7 @@ const FooterSection = () => {
       <img
         src="/images/footer-dip.png"
         alt=""
-        className="w-full object-cover -translate-y-1"
+        className="w-full object-cover -translate-y-1" // 
       />
 
       <div className="2xl:h-[110dvh] relative md:pt-[20vh] pt-[10vh]">
