@@ -50,7 +50,7 @@ const FooterSection = () => {
         <div className="mt-40 md:px-10 px-5 flex gap-10 md:flex-row flex-col justify-between text-milk font-paragraph md:text-lg font-medium">
           <div className="flex items-center md:gap-16 gap-5">
             <div>
-              <img src="/public/images/nav-logo.svg" />
+              <img src="/images/nav-logo.svg" />
             </div>
             <div>
               <p>Chug Club</p>
