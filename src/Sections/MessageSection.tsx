@@ -88,7 +88,7 @@ const MessageSection = () => {
                     <div style={{
                         clipPath: "polygon(0% 0, 0% 0, 0% 100%, 0 100%)"
                     }} className='msg-text-scroll'>
-                        <div className='bg-light-brown md:pb-5 pb-3 px-5'>
+                        <div className='bg-light-brown px-5'>
                             <h2 className='text-red-brown'>fuel up</h2>
                         </div>
                     </div>

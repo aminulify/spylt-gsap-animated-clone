@@ -1,8 +1,8 @@
 import React from 'react';
-import ClipPathTItle from '../Components/ClipPathTItle';
+import ClipPathTItle from '../Components/ClipPathTItle.js';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
-import VideoPinSection from '../Components/VideoPinSection';
+import VideoPinSection from '../Components/VideoPinSection.js';
 
 const BenefitSection = () => {
   useGSAP(() => {

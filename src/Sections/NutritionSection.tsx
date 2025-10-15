@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react"
 import { useState } from "react"
 import { useMediaQuery } from "react-responsive"
-import { nutrientLists } from "../Constants";
+import { nutrientLists } from "../Constants/index.js";
 import { useEffect } from "react";
 
 const NutritionSection = () => {

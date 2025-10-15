@@ -1,15 +1,25 @@
 import { useRef } from "react";
-import { cards } from "../Constants";
+import { cards } from "../Constants/index";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// register GSAP plugin
+gsap.registerPlugin(ScrollTrigger);
+
+interface Card {
+  src: string;
+  rotation: string;
+  name: string;
+  img: string;
+  translation?: string; 
+}
 
 const TestimonialSection = () => {
-  const vdRef = useRef([]);
+  const vdRef = useRef<HTMLVideoElement[]>([]);
 
   useGSAP(() => {
-    gsap.set(".testimonials-section", {
-      marginTop: "-140vh",
-    });
+    gsap.set(".testimonials-section", { marginTop: "-140vh" });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -20,23 +30,9 @@ const TestimonialSection = () => {
       },
     });
 
-    tl.to(".testimonials-section .first-title", {
-      xPercent: 70,
-    })
-      .to(
-        ".testimonials-section .sec-title",
-        {
-          xPercent: 25,
-        },
-        "<"
-      )
-      .to(
-        ".testimonials-section .third-title",
-        {
-          xPercent: -50,
-        },
-        "<"
-      );
+    tl.to(".testimonials-section .first-title", { xPercent: 70 })
+      .to(".testimonials-section .sec-title", { xPercent: 25 }, "<")
+      .to(".testimonials-section .third-title", { xPercent: -50 }, "<");
 
     const pinTl = gsap.timeline({
       scrollTrigger: {
@@ -55,39 +51,41 @@ const TestimonialSection = () => {
     });
   });
 
-  const handlePlay = (index) => {
+  const handlePlay = (index: number) => {
     const video = vdRef.current[index];
-    video.play();
+    if (video) video.play();
   };
 
-  const handlePause = (index) => {
+  const handlePause = (index: number) => {
     const video = vdRef.current[index];
-    video.pause();
+    if (video) video.pause();
   };
 
   return (
-    <section className="testimonials-section">
-      <div className="absolute size-full flex flex-col items-center pt-[5vw]">
+    <section className="testimonials-section relative">
+      <div className="absolute inset-0 flex flex-col items-center pt-[5vw]">
         <h1 className="text-black first-title">What's</h1>
         <h1 className="text-light-brown sec-title">Everyone</h1>
         <h1 className="text-black third-title">Talking</h1>
       </div>
 
       <div className="pin-box">
-        {cards.map((card, index) => (
+        {cards.map((card: Card, index: number) => (
           <div
             key={index}
-            className={`vd-card ${card.translation} ${card.rotation}`}
+            className={`vd-card ${card.translation ?? ""} ${card.rotation}`}
             onMouseEnter={() => handlePlay(index)}
             onMouseLeave={() => handlePause(index)}
           >
             <video
-              ref={(el) => (vdRef.current[index] = el)}
+              ref={(el) => {
+                if (el) vdRef.current[index] = el;
+              }}
               src={card.src}
               playsInline
               muted
               loop
-              className="size-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}

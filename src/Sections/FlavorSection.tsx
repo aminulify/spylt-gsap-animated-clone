@@ -1,5 +1,5 @@
-import FlavorTitle from '../Components/FlavorTitle'
-import FlavorSlider from '../Components/FlavorSlider'
+import FlavorTitle from '../Components/FlavorTitle.js'
+import FlavorSlider from '../Components/FlavorSlider.js'
 
 const FlavorSection = () => {
   return (
