@@ -1,16 +1,27 @@
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import SplitText from "gsap/SplitText";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-const FlavorTitle = () => {
+// Register GSAP plugins
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+const FlavorTitle: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
-    const firstTextSplit = SplitText.create(".first-text-split h1", {
+    if (!containerRef.current) return;
+
+    // Split text into characters
+    const firstTextSplit = new (SplitText as any)(".first-text-split h1", {
       type: "chars",
     });
-    const secondTextSplit = SplitText.create(".second-text-split h1", {
+    const secondTextSplit = new (SplitText as any)(".second-text-split h1", {
       type: "chars",
     });
 
+    // Animate first line
     gsap.from(firstTextSplit.chars, {
       yPercent: 200,
       stagger: 0.02,
@@ -21,6 +32,7 @@ const FlavorTitle = () => {
       },
     });
 
+    // Reveal middle scroll text
     gsap.to(".flavor-text-scroll", {
       duration: 1,
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -30,6 +42,7 @@ const FlavorTitle = () => {
       },
     });
 
+    // Animate last line
     gsap.from(secondTextSplit.chars, {
       yPercent: 200,
       stagger: 0.02,
@@ -39,10 +52,13 @@ const FlavorTitle = () => {
         start: "top 1%",
       },
     });
-  });
+  }, { scope: containerRef });
 
   return (
-    <div className="general-title col-center h-full 2xl:gap-32 xl:gap-24 gap-16">
+    <div
+      ref={containerRef}
+      className="general-title col-center h-full 2xl:gap-32 xl:gap-24 gap-16"
+    >
       <div className="overflow-hidden 2xl:py-0 py-3 first-text-split">
         <h1>We have 6</h1>
       </div>

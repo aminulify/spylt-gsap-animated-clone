@@ -1,7 +1,8 @@
-import FlavorTitle from "../components/FlavorTitle";
-import FlavorSlider from "../components/FlavorSlider";
+import React from "react";
+import FlavorTitle from "../components/FlavorTitle.tsx";
+import FlavorSlider from "../components/FlavorSlider.tsx";
 
-const FlavorSection = () => {
+const FlavorSection: React.FC = () => {
   return (
     <section className="flavor-section">
       <div className="h-full flex lg:flex-row flex-col items-center relative">

@@ -1,16 +1,17 @@
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 
-const FooterSection = () => {
+const FooterSection: React.FC = () => {
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
 
   return (
-     <section className="footer-section">
+    <section className="footer-section">
       <img
         src="/images/footer-dip.png"
         alt=""
-        className="w-full object-cover -translate-y-1" // 
+        className="w-full object-cover -translate-y-1"
       />
 
       <div className="2xl:h-[110dvh] relative md:pt-[20vh] pt-[10vh]">
@@ -20,39 +21,40 @@ const FooterSection = () => {
           </h1>
         </div>
 
-        <div className="">
-         {isMobile ? (
+        <div>
+          {isMobile ? (
             <img
-                src="/images/footer-drink.png"
-                className="absolute top-0 object-contain -z-10"
+              src="/images/footer-drink.png"
+              alt="footer drink"
+              className="absolute top-0 object-contain -z-10"
             />
-            ) : (
+          ) : (
             <video
-                src="/videos/splash.mp4"
-                autoPlay
-                playsInline
-                muted
-                className="absolute top-0 object-contain mix-blend-lighten"
+              src="/videos/splash.mp4"
+              autoPlay
+              playsInline
+              muted
+              className="absolute top-0 object-contain mix-blend-lighten"
             />
-            )}
+          )}
         </div>
 
         <div className="flex-center gap-5 relative z-10 md:mt-20 mt-5">
           <div className="social-btn">
-            <img src="./images/yt.svg" alt="" />
+            <img src="./images/yt.svg" alt="YouTube" />
           </div>
           <div className="social-btn">
-            <img src="./images/insta.svg" alt="" />
+            <img src="./images/insta.svg" alt="Instagram" />
           </div>
           <div className="social-btn">
-            <img src="./images/tiktok.svg" alt="" />
+            <img src="./images/tiktok.svg" alt="TikTok" />
           </div>
         </div>
 
         <div className="mt-40 md:px-10 px-5 flex gap-10 md:flex-row flex-col justify-between text-milk font-paragraph md:text-lg font-medium">
           <div className="flex items-center md:gap-16 gap-5">
             <div className="cursor-pointer z-10">
-              <img src="/images/nav-logo.svg" />
+              <img src="/images/nav-logo.svg" alt="Logo" />
             </div>
             <div className="cursor-pointer z-10">
               <p>Chug Club</p>
@@ -72,7 +74,6 @@ const FooterSection = () => {
               Updates, Events, and More!
             </p>
             <div className="flex justify-between items-center border-b border-[#D9D9D9] py-5 md:mt-10 z-10">
-             
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -84,11 +85,10 @@ const FooterSection = () => {
         </div>
 
         <div className="copyright-box">
-          {/* The final row with copyright and legal links. */}
           <p>Copyright © 2025 Spylt - All Rights Reserved</p>
           <div className="flex items-center gap-7 cursor-pointer">
             <p>Privacy Policy</p>
-            <p>Terms of Sеrvice</p>
+            <p>Terms of Service</p>
           </div>
         </div>
       </div>

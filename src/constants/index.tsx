@@ -1,4 +1,10 @@
-const flavorlists = [
+export interface Flavor {
+  name: string;
+  color: string;
+  rotation: string;
+}
+
+const flavorlists: Flavor[] = [
   {
     name: "Chocolate Milk",
     color: "brown",

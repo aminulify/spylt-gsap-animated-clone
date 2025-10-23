@@ -1,20 +1,27 @@
 import { useGSAP } from "@gsap/react";
-import { flavorlists } from "../constants";
+import { flavorlists } from "../constants/index.tsx";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
-const FlavorSlider = () => {
-  const sliderRef = useRef();
+interface Flavor {
+  name: string;
+  color: string;
+  rotation: string;
+}
+
+const FlavorSlider: React.FC = () => {
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const isTablet = useMediaQuery({
     query: "(max-width: 1024px)",
   });
 
   useGSAP(() => {
-    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+    const scrollAmount =
+      (sliderRef.current?.scrollWidth || 0) - window.innerWidth;
 
-    if (!isTablet) {
+    if (!isTablet && sliderRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".flavor-section",
@@ -66,7 +73,7 @@ const FlavorSlider = () => {
   return (
     <div ref={sliderRef} className="slider-wrapper">
       <div className="flavors">
-        {flavorlists.map((flavor) => (
+        {flavorlists.map((flavor: Flavor) => (
           <div
             key={flavor.name}
             className={`relative z-30 lg:w-[50vw] w-96 lg:h-[70vh] md:w-[90vw] md:h-[50vh] h-80 flex-none ${flavor.rotation}`}

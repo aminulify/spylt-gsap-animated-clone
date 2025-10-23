@@ -1,17 +1,24 @@
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
 
-const VideoPinSection = () => {
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+const VideoPinSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
 
   useGSAP(() => {
-    if (!isMobile) {
+    if (!isMobile && sectionRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".vd-pin-section",
+          trigger: sectionRef.current,
           start: "-15% top",
           end: "200% top",
           scrub: 1.5,
@@ -24,10 +31,10 @@ const VideoPinSection = () => {
         ease: "power1.inOut",
       });
     }
-  });
+  }, { scope: sectionRef });
 
   return (
-    <section className="vd-pin-section">
+    <section ref={sectionRef} className="vd-pin-section">
       <div
         style={{
           clipPath: isMobile

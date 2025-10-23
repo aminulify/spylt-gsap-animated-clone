@@ -1,16 +1,25 @@
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import SplitText from "gsap/SplitText";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-const MessageSection = () => {
+// Register GSAP plugins
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+const MessageSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
   useGSAP(() => {
-    const firstMsgSplit = SplitText.create(".first-message", {
+    if (!sectionRef.current) return;
+
+    const firstMsgSplit = new (SplitText as any)(".first-message", {
       type: "words",
     });
-    const secMsgSplit = SplitText.create(".second-message", {
+    const secMsgSplit = new (SplitText as any)(".second-message", {
       type: "words",
     });
-    const paragraphSplit = SplitText.create(".message-content p", {
+    const paragraphSplit = new (SplitText as any)(".message-content p", {
       type: "words, lines",
       linesClass: "paragraph-line",
     });
@@ -26,6 +35,7 @@ const MessageSection = () => {
         scrub: true,
       },
     });
+
     gsap.to(secMsgSplit.words, {
       color: "#faeade",
       ease: "power1.in",
@@ -45,6 +55,7 @@ const MessageSection = () => {
         start: "top 60%",
       },
     });
+
     revealTl.to(".msg-text-scroll", {
       duration: 1,
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -57,6 +68,7 @@ const MessageSection = () => {
         start: "top center",
       },
     });
+
     paragraphTl.from(paragraphSplit.words, {
       yPercent: 300,
       rotate: 3,
@@ -64,10 +76,10 @@ const MessageSection = () => {
       duration: 1,
       stagger: 0.01,
     });
-  });
+  }, { scope: sectionRef });
 
   return (
-    <section className="message-content">
+    <section ref={sectionRef} className="message-content">
       <div className="container mx-auto flex-center py-28 relative">
         <div className="w-full h-full">
           <div className="msg-wrapper">

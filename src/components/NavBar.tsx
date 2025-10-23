@@ -1,6 +1,7 @@
+import React from "react";
 import { BsChevronBarDown } from "react-icons/bs";
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   return (
     <nav className="md:w-[1200px] top-0">
       <div className="w-full mx-auto flex justify-between items-center fixed top-0 left-0 z-50 md:py-5 md:px-12 p-3">

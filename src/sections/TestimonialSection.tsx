@@ -1,10 +1,14 @@
-import { useRef } from "react";
-import { cards } from "../constants";
+import React, { useRef } from "react";
+import { cards } from "../constants/index.tsx";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-const TestimonialSection = () => {
-  const vdRef = useRef([]);
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+const TestimonialSection: React.FC = () => {
+  const vdRef = useRef<HTMLVideoElement[]>([]);
 
   useGSAP(() => {
     gsap.set(".testimonials-section", {
@@ -25,16 +29,12 @@ const TestimonialSection = () => {
     })
       .to(
         ".testimonials-section .sec-title",
-        {
-          xPercent: 25,
-        },
+        { xPercent: 25 },
         "<"
       )
       .to(
         ".testimonials-section .third-title",
-        {
-          xPercent: -50,
-        },
+        { xPercent: -50 },
         "<"
       );
 
@@ -55,14 +55,14 @@ const TestimonialSection = () => {
     });
   });
 
-  const handlePlay = (index) => {
+  const handlePlay = (index: number) => {
     const video = vdRef.current[index];
-    video.play();
+    video?.play();
   };
 
-  const handlePause = (index) => {
+  const handlePause = (index: number) => {
     const video = vdRef.current[index];
-    video.pause();
+    video?.pause();
   };
 
   return (
@@ -82,7 +82,9 @@ const TestimonialSection = () => {
             onMouseLeave={() => handlePause(index)}
           >
             <video
-              ref={(el) => (vdRef.current[index] = el)}
+              ref={(el) => {
+                if (el) vdRef.current[index] = el;
+              }}
               src={card.src}
               playsInline
               muted
