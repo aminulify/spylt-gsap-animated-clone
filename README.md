@@ -1,6 +1,5 @@
 <h3>Project: SPLYT Drink Clone: Next-Level Web Animation with GSAP</h3>
 <p><b>Used Language/Library/Frameworks/Tools (Frontend Project):</b> <span style="color:blue;">HTML5, CSS3, Tailwind CSS, GSAP, React, Typescript, Vercel, Github, Git</span></p>
-<p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> <br>
 
 <h4>Overview:</h4>
 <p>This project is a high-performance, pixel-perfect frontend clone of the sleek SPLYT Drink website, meticulously engineered to showcase advanced web animation and scroll-driven storytelling. It serves as a masterclass in utilizing the GreenSock Animation Platform (GSAP) to create an immersive, butter-smooth, and performance-optimized user experience.</p>
